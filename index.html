@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ibrahim Hussein | Portfolio</title>
@@ -882,7 +883,7 @@
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#projects">Explore Projects</a>
-              <a class="btn btn-secondary" href="cv.pdf" target="_blank"
+              <a class="btn btn-secondary" href="CV/cv.pdf" id="openCvBtn"
                 >View CV</a
               >
             </div>
@@ -1249,6 +1250,35 @@
             </div>
           </div>
         </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-top">
+            <div>
+              <h3>QAF Foundation, AUC</h3>
+              <p class="meta">Student Activity</p>
+            </div>
+            <span class="meta-pill">Language & Communication</span>
+          </div>
+          <p>
+            Contributed to translating and localizing scientific content into
+            Arabic and developed language and communication skills through
+            workshops and collaborative activities.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-top">
+            <div>
+              <h3>Help Club, AUC</h3>
+              <p class="meta">Community Service</p>
+            </div>
+            <span class="meta-pill">Volunteer Work</span>
+          </div>
+          <p>
+            Participated in community service initiatives, including organizing
+            visits and activities for children, and contributed to volunteer
+            efforts supporting social development.
+          </p>
+        </div>
       </section>
 
       <section id="contact" class="container reveal">
@@ -1353,6 +1383,60 @@
       window.addEventListener("mousemove", (e) => {
         cursorGlow.style.left = e.clientX + "px";
         cursorGlow.style.top = e.clientY + "px";
+      });
+    </script>
+    <div class="cv-modal" id="cvModal">
+      <div class="cv-modal-overlay" id="closeCvBtn"></div>
+
+      <div class="cv-modal-content">
+        <div class="cv-modal-topbar">
+          <div class="cv-modal-title">
+            <span>Curriculum Vitae</span>
+            <small>Ibrahim Hussein</small>
+          </div>
+
+          <div class="cv-modal-actions">
+            <a href="CV/cv.pdf" target="_blank" class="cv-action-btn"
+              >Open in New Tab</a
+            >
+            <a href="CV/cv.pdf" download class="cv-action-btn">Download</a>
+            <button class="cv-close-btn" id="closeCvBtn2">&times;</button>
+          </div>
+        </div>
+
+        <div class="cv-frame-wrap">
+          <iframe
+            src="CV/cv.pdf"
+            class="cv-frame"
+            title="Ibrahim Hussein CV"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script>
+      const openCvBtn = document.getElementById("openCvBtn");
+      const cvModal = document.getElementById("cvModal");
+      const closeCvBtn = document.getElementById("closeCvBtn");
+      const closeCvBtn2 = document.getElementById("closeCvBtn2");
+
+      openCvBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        cvModal.classList.add("show");
+        document.body.classList.add("modal-open");
+      });
+
+      function closeCvModal() {
+        cvModal.classList.remove("show");
+        document.body.classList.remove("modal-open");
+      }
+
+      closeCvBtn.addEventListener("click", closeCvModal);
+      closeCvBtn2.addEventListener("click", closeCvModal);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeCvModal();
+        }
       });
     </script>
   </body>
